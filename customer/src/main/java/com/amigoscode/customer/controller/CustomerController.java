@@ -1,7 +1,6 @@
 package com.amigoscode.customer.controller;
 
 import com.amigoscode.customer.request.customer.CustomerRegistrationRequest;
-import com.amigoscode.customer.response.fraud.FraudCheckResponse;
 import com.amigoscode.customer.service.CustomerService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;
