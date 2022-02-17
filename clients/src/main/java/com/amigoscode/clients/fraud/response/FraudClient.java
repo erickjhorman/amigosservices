@@ -1,6 +1,5 @@
-package com.amigoscode.clients.fraud;
+package com.amigoscode.clients.fraud.response;
 
-import com.amigoscode.clients.fraud.response.FraudCheckResponse;
 import lombok.NonNull;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
