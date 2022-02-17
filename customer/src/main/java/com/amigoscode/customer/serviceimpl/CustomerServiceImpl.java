@@ -1,7 +1,9 @@
 package com.amigoscode.customer.serviceimpl;
 
-import com.amigoscode.clients.fraud.FraudClient;
 import com.amigoscode.clients.fraud.response.FraudCheckResponse;
+import com.amigoscode.clients.fraud.response.FraudClient;
+import com.amigoscode.clients.notification.NotificationClient;
+import com.amigoscode.clients.notification.NotificationRequest;
 import com.amigoscode.customer.domain.Customer;
 import com.amigoscode.customer.mapper.customer.CustomerMapper;
 import com.amigoscode.customer.repository.CustomerRepository;
@@ -14,7 +16,7 @@ import java.util.Optional;
 
 @Service
 public record CustomerServiceImpl(CustomerMapper customerMapper, CustomerRepository customerRepository,
-                                  RestTemplate restTemplate, FraudClient fraudClient) implements CustomerService {
+                                  RestTemplate restTemplate, FraudClient fraudClient, NotificationClient notificationClient) implements CustomerService {
 
     @Override
     public void registerCustomer(CustomerRegistrationRequest request) {
@@ -31,5 +33,10 @@ public record CustomerServiceImpl(CustomerMapper customerMapper, CustomerReposit
         if (fraudCheckResponse.isPresent() && fraudCheckResponse.get().isFraudster()) {
             throw new IllegalStateException("fraudster");
         }
+        notificationClient.sendNotification(new NotificationRequest(
+                                customer.getId(),
+                customer.getEmail(), String.format("Hi %s, welcome to Amigoscode..",
+                customer.getFirstName())
+        ));
     }
 }
