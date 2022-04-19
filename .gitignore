@@ -5,4 +5,5 @@ eureka-server/target/
 clients/target/
 notification/target/
 apigateway/target/
+amgp/target/
 
