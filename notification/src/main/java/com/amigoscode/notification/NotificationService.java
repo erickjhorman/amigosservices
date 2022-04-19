@@ -11,7 +11,7 @@ public class NotificationService {
     private final NotificationRepository notificationRepository;
     private final NotificationMapper notificationMapper;
 
-    void send(NotificationRequest notificationRequest){
+   public void send(NotificationRequest notificationRequest){
         notificationRepository.save(notificationMapper.notificationRequestToNotification(notificationRequest));
     }
 }
