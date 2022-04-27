@@ -11,6 +11,7 @@
 
     <artifactId>customer</artifactId>
 
+
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
@@ -29,6 +30,18 @@
             </build>
         </profile>
     </profiles>
+
+    <packaging>jar</packaging>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+        <finalName>customer-microservice</finalName>
+    </build>
+
      <dependencies>
          <dependency>
              <groupId>org.springframework.boot</groupId>
@@ -67,6 +80,7 @@
              <groupId>com.amigoscode</groupId>
              <artifactId>amgp</artifactId>
              <version>1.0-SNAPSHOT</version>
+             <scope>compile</scope>
          </dependency>
          <dependency>
              <groupId>com.amigoscode</groupId>
